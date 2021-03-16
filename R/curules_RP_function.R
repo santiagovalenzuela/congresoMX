@@ -8,7 +8,7 @@ curules_rp <- function(datos, nulos, no_registrados, independientes) {
   #' @param nulos Vector que indica qué fila(s) debe(n) ser consideradas como votos nulos
   #' @param no_registrados Vector que indica qué fila(s) debe(n) ser consideradas como candidatos no registrados
   #' @param independientes Vector que indica qué fila(s) debe(n) ser consideradas como candidatos independientes
-  #' @examples
+  #' @examples curules_rp(diputados_RP_2018, "VOTOS_NULOS", "CANDIDATURAS_NO_REGISTRADAS",  c("CandidaturaIndependiente_1", "CandidaturaIndependiente_2"))
 
   #Renombramos las columnas
   names(datos)[1] <-"PARTIDO_POLITICO"
