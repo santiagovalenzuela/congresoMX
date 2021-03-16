@@ -2,9 +2,7 @@
 % Please edit documentation in R/curules_RP_function.R
 \name{curules_rp}
 \alias{curules_rp}
-\title{Calcular curules de representación proporcional (RP)
-Esta función permite calcular las curules de representación proporcional
-que corresponden a cada partido en la Cámara de Diputados de México.}
+\title{Calcular curules de representación proporcional (RP)}
 \usage{
 curules_rp(datos, nulos, no_registrados, independientes)
 }
@@ -18,7 +16,9 @@ curules_rp(datos, nulos, no_registrados, independientes)
 \item{independientes}{Vector que indica qué fila(s) debe(n) ser consideradas como candidatos independientes}
 }
 \description{
-Calcular curules de representación proporcional (RP)
 Esta función permite calcular las curules de representación proporcional
 que corresponden a cada partido en la Cámara de Diputados de México.
+}
+\examples{
+curules_rp(diputados_RP_2018, "VOTOS_NULOS", "CANDIDATURAS_NO_REGISTRADAS",  c("CandidaturaIndependiente_1", "CandidaturaIndependiente_2"))
 }
