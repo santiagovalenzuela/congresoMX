@@ -1,6 +1,6 @@
 curules_rp <- function(datos, nulos, no_registrados, independientes) {
   #' Calcular curules de representación proporcional (RP)
-  #
+  #'
   #' Esta función permite calcular las curules de representación proporcional
   #' que corresponden a cada partido en la Cámara de Diputados de México.
   #'
@@ -8,6 +8,7 @@ curules_rp <- function(datos, nulos, no_registrados, independientes) {
   #' @param nulos Vector que indica qué fila(s) debe(n) ser consideradas como votos nulos
   #' @param no_registrados Vector que indica qué fila(s) debe(n) ser consideradas como candidatos no registrados
   #' @param independientes Vector que indica qué fila(s) debe(n) ser consideradas como candidatos independientes
+  #' @examples
 
   #Renombramos las columnas
   names(datos)[1] <-"PARTIDO_POLITICO"
