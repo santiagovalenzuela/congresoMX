@@ -1,4 +1,4 @@
-curules_rp <- function(datos, nulos, no_registrados, independientes) {
+curules_rp <- function(datos, nulos, no_registrados, independientes, umbral= 3) {
   #' Calcular curules de representación proporcional (RP)
   #'
   #' Esta función permite calcular las curules de representación proporcional
@@ -8,6 +8,7 @@ curules_rp <- function(datos, nulos, no_registrados, independientes) {
   #' @param nulos Vector que indica qué fila(s) debe(n) ser consideradas como votos nulos
   #' @param no_registrados Vector que indica qué fila(s) debe(n) ser consideradas como candidatos no registrados
   #' @param independientes Vector que indica qué fila(s) debe(n) ser consideradas como candidatos independientes
+  #' @param umbral Opcional. Número que indica el porcentaje de votos necesario para obtener representación parlamentaria. Si no se indica, se usará el establecido por la LGIPE (3%)
   #' @examples curules_rp(diputados_RP_2018, "VOTOS_NULOS", "CANDIDATURAS_NO_REGISTRADAS",  c("CandidaturaIndependiente_1", "CandidaturaIndependiente_2"))
 
   #Renombramos las columnas
@@ -40,9 +41,9 @@ curules_rp <- function(datos, nulos, no_registrados, independientes) {
                         digits = 4)
 
   # Calculamos la Votación Nacional Emitida, quitando los votos a partidos que no
-  # alcanzaron el 3% de la VTE, a Candidatos Independientes, y votos nulos
+  # alcanzaron el umbral de la VTE (actualmente, 3%), a Candidatos Independientes, y votos nulos
 
-  vne <- sum(subset(datos, !(PARTIDO_POLITICO %in% c(independientes, nulos) | pc_vte < 3),
+  vne <- sum(subset(datos, !(PARTIDO_POLITICO %in% c(independientes, nulos) | pc_vte < umbral),
                     select= VOTACION_TOTAL_EMITIDA))
 
   vve_df$pc_vne <- round((vve_df$VOTACION_TOTAL_EMITIDA/vne)*100,
@@ -52,7 +53,7 @@ curules_rp <- function(datos, nulos, no_registrados, independientes) {
   cociente_nat <- vne/200
 
   #Creamos un nvo dataframe con los partidos que entran a RP:
-  pp_rp <- subset(vve_df, !(PARTIDO_POLITICO %in% c(independientes, nulos) | pc_vte < 3))
+  pp_rp <- subset(vve_df, !(PARTIDO_POLITICO %in% c(independientes, nulos) | pc_vte < umbral))
 
   #Se divide la votación a cada partido entre ese cociente
   pp_rp$dips_cociente <- trunc((pp_rp$VOTACION_TOTAL_EMITIDA)/cociente_nat)
