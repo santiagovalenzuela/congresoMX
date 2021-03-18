@@ -4,7 +4,7 @@
 \alias{curules_rp}
 \title{Calcular curules de representación proporcional (RP)}
 \usage{
-curules_rp(datos, nulos, no_registrados, independientes)
+curules_rp(datos, nulos, no_registrados, independientes, umbral = 3)
 }
 \arguments{
 \item{datos}{Debe ser un dataframe con tres columnas: los partidos políticos, la votación total emitida que obtuvieron, y las curules de mayoría relativa alcanzadas.}
@@ -14,6 +14,8 @@ curules_rp(datos, nulos, no_registrados, independientes)
 \item{no_registrados}{Vector que indica qué fila(s) debe(n) ser consideradas como candidatos no registrados}
 
 \item{independientes}{Vector que indica qué fila(s) debe(n) ser consideradas como candidatos independientes}
+
+\item{umbral}{Opcional. Número que indica el porcentaje de votos necesario para obtener representación parlamentaria. Si no se indica, se usará el establecido por la LGIPE (3\%)}
 }
 \description{
 Esta función permite calcular las curules de representación proporcional
