@@ -9,7 +9,8 @@ curules_rp <- function(datos, nulos, no_registrados, independientes, umbral= 3) 
   #' @param no_registrados Vector que indica qué fila(s) debe(n) ser consideradas como candidatos no registrados
   #' @param independientes Vector que indica qué fila(s) debe(n) ser consideradas como candidatos independientes
   #' @param umbral Opcional. Número que indica el porcentaje de votos necesario para obtener representación parlamentaria. Si no se indica, se usará el establecido por la LGIPE (3%)
-  #' @examples curules_rp(diputados_RP_2018, "VOTOS_NULOS", "CANDIDATURAS_NO_REGISTRADAS",  c("CandidaturaIndependiente_1", "CandidaturaIndependiente_2"))
+  #' @export
+  #'@examples curules_rp(diputados_RP_2018, "VOTOS_NULOS", "CANDIDATURAS_NO_REGISTRADAS",  c("CandidaturaIndependiente_1", "CandidaturaIndependiente_2"))
 
   #Renombramos las columnas
   names(datos)[1] <-"PARTIDO_POLITICO"
